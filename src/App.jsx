@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { RootLayout } from "./Layout";
-import { Dj, Users } from "./pages";
+import { Users, Dj } from "./pages";
 
 function App() {
   const router = createBrowserRouter([
@@ -11,15 +11,16 @@ function App() {
       children: [
         {
           index: true,
-          element: <div>Welcome to the Club Music Request App</div>,
-        },
-        {
-          path: "/users",
           element: <Users />,
         },
         {
-          path: "/DJ",
+          path: "users",
+          element: <Users />,
+        },
+        {
+          path: "dj",
           element: <Dj />,
+          errorElement: <div>Page not Found</div>,
         },
       ],
     },

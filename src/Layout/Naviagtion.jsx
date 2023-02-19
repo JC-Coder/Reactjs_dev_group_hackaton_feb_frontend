@@ -12,14 +12,6 @@ function Naviagtion() {
         >
           Users
         </NavLink>
-        <NavLink
-          to="/dj"
-          className={({ isActive }) =>
-            isActive ? "border-b-red-500 border-b " : ""
-          }
-        >
-          DJ
-        </NavLink>
       </ul>
     </nav>
   );
