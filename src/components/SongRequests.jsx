@@ -7,21 +7,9 @@ import Navbar from "./Navbar";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import CustomRequest from "./CustomRequest";
 import { nanoid } from "@reduxjs/toolkit";
-
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import HeroSection from "./HeroSection";
 
-const gradients = [
-  "from-red-500/50",
-  "from-slate-500/50",
-  "from-indigo-500/50",
-  "from-green-500/",
-  "from-yellow-500/50",
-  "from-purple-500/50",
-  "from-pink-500/50",
-  "from-blue-500/50",
-  "from-teal-500/50",
-];
 
 // check this again
 function generateUserId() {
@@ -31,9 +19,13 @@ function generateUserId() {
 
 
 export default function SongRequests() {
-    const history = useSelector((state) => state.history.historyData);
+  const history = useSelector((state) => state.history.historyData);
   const dispatch = useDispatch();
-  const [gradient, setGradient] = useState("");
+
+  useEffect(() => {
+    generateUserId()
+  }, []);
+  
 
 
   const notify = () =>
@@ -45,41 +37,20 @@ export default function SongRequests() {
       theme: "colored",
     });
 
-  function getRandomGradient() {
-    let randomNumber = Math.floor(Math.random() * gradients.length);
-    setGradient(gradients[randomNumber]);
-  }
-
-  function handleClearHistory() {
+    function handleClearHistory() {
     dispatch(clearHistory());
     if (history.length > 0) {
       notify();
     }
   }
 
-  useEffect(() => {
-    getRandomGradient();
-    generateUserId()
-  }, []);
 
   return (
     <div className="flex-grow bg-[#1e1e1e] text-white h-screen overflow-y-scroll scrollbar-hide">
       <Navbar />
       {/* Hero component */}
-      <section
-        className={`bg-gradient-to-b relative to-black ${gradient} h-80 `}
-      >
-        <div className="h-80">
-          <img
-            className="h-full w-full object-cover opacity-10"
-            src="https://images.pexels.com/photos/332688/pexels-photo-332688.jpeg?auto=compress&cs=tinysrgb&w=600"
-            alt=""
-          />
-        </div>
-        <h1 className="absolute animate-pulse bottom-0 font-medium text-4xl ml-auto p-2">
-          Now Playing <span className="text-orange-500">Music Title</span>
-        </h1>
-      </section>
+      <HeroSection />
+      
 
       <section className="px-2">
         <CustomRequest />
