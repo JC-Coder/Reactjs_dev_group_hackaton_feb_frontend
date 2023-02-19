@@ -7,14 +7,13 @@ function App() {
     {
       path: "/",
       errorElement: <div>Page not Found</div>,
-      element: <RootLayout />,
       children: [
+        // {
+        //   index: true,
+        //   element: <div>Welcome to the Club Music Request App</div>,
+        // },
         {
-          index: true,
-          element: <div>Welcome to the Club Music Request App</div>,
-        },
-        {
-          path: "/users",
+          path: "/",
           element: <Users />,
         },
         {
