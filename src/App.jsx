@@ -17,7 +17,7 @@ function App() {
           element: <Users />,
         },
         {
-          path: "/DJ",
+          path: "/dj",
           element: <Dj />,
         },
       ],
