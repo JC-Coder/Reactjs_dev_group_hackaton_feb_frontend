@@ -50,8 +50,6 @@ export default function SongRequests() {
       <Navbar />
       {/* Hero component */}
       <HeroSection />
-      
-
       <section className="px-2">
         <CustomRequest />
       </section>
