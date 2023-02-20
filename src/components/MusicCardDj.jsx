@@ -1,12 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addHistory, changeRequested } from "../features/history/history-slice";
+import { addHistory } from "../features/history/history-slice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
 
-export default function MusicCard(item) {
+export default function MusicCardDj(item) {
     const currentHistory = useSelector((state) => state.history.historyData);
   const dispatch = useDispatch();
 
@@ -45,7 +45,19 @@ export default function MusicCard(item) {
           className="font-medium block mt-2 text-xs active:scale-90 transition bg-white text-[#1e1e1e] hover:text-white hover:bg-blue-400 px-2 py-1 rounded"
           onClick={() => handleRequest(item.id)}
         >
-          Request music
+          Mark as now playing
+        </button>
+        <button
+          className="font-medium block mt-2 text-xs active:scale-90 transition bg-white text-[#1e1e1e] hover:text-white hover:bg-blue-400 px-2 py-1 rounded"
+          onClick={() => handleRequest(item.id)}
+        >
+          Mark as played
+        </button>
+        <button
+          className="font-medium block mt-2 text-xs active:scale-90 transition bg-white text-[#1e1e1e] hover:text-white hover:bg-blue-400 px-2 py-1 rounded"
+          onClick={() => handleRequest(item.id)}
+        >
+          Mark as unavailable
         </button>
       </div> 
     </div>

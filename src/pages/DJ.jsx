@@ -1,5 +1,11 @@
+import SongRequestsDj from '../components/SongRequestsDj';
+
 function DJ() {
-  return <div>DJ Page</div>;
+  return <div>
+    <main>
+      <SongRequestsDj />
+    </main>
+    </div>;
 }
 
 export default DJ;
