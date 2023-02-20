@@ -40,7 +40,7 @@ export default function MusicCard(item) {
       <div className="pt-2">
         <h2 className="text-white font-medium">{item.title}</h2>
         <span className="text-sm text-gray-400">{item.artist}</span>
-        <span className="text-gray-500 text-xs ml-2 ">{item.year}</span>
+        {/* <span className="text-gray-500 text-xs ml-2 ">{item.year}</span> */}
         <button
           className="font-medium block mt-2 text-xs active:scale-90 transition bg-white text-[#1e1e1e] hover:text-white hover:bg-blue-400 px-2 py-1 rounded"
           onClick={() => handleRequest(item.id)}
