@@ -1,7 +1,7 @@
 export const musicData = [
     {
         id: 1,
-        title: 'Birthday Song',
+        name: 'Birthday Song',
         artist: 'Davido',
         albumArt: 'https://images.pexels.com/photos/894156/pexels-photo-894156.jpeg?auto=compress&cs=tinysrgb&w=400',
         year: 2016,
@@ -10,7 +10,7 @@ export const musicData = [
     },
     {
         id: 2,
-        title: 'Fine Lady',
+        name: 'Fine Lady',
         artist: 'wizkidayo',
         albumArt: 'https://images.unsplash.com/photo-1506010100053-cc98c49b6aa8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2l6a2lkfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60',
         year: 2020,
@@ -19,7 +19,7 @@ export const musicData = [
     },
     {
         id: 3,
-        title: 'Worries',
+        name: 'Worries',
         artist: 'Tems',
         albumArt: 'https://images.pexels.com/photos/6862365/pexels-photo-6862365.jpeg?auto=compress&cs=tinysrgb&w=400',
         year: 2021,
@@ -28,7 +28,7 @@ export const musicData = [
     },
     {
         id: 4,
-        title: 'Action Film',
+        name: 'Action Film',
         artist: 'M.I',
         albumArt: 'https://images.pexels.com/photos/8044178/pexels-photo-8044178.jpeg?auto=compress&cs=tinysrgb&w=400',
         year: 2008,
@@ -37,7 +37,7 @@ export const musicData = [
     },
     {
         id: 5,
-        title: 'Pain Dem',
+        name: 'Pain Dem',
         artist: 'Tiwa Savage',
         albumArt: 'https://images.pexels.com/photos/4315839/pexels-photo-4315839.jpeg?auto=compress&cs=tinysrgb&w=400',
         year: 2019,
@@ -46,7 +46,7 @@ export const musicData = [
     },
     {
         id: 6,
-        title: 'African giant',
+        name: 'African giant',
         artist: 'Burna boy',
         albumArt: 'https://images.pexels.com/photos/1885213/pexels-photo-1885213.jpeg?auto=compress&cs=tinysrgb&w=400',
         year: 2020,
@@ -55,7 +55,7 @@ export const musicData = [
     },
     {
         id: 7,
-        title: 'Sound',
+        name: 'Sound',
         artist: 'Dunsin Oyekan',
         albumArt: 'https://images.pexels.com/photos/4406759/pexels-photo-4406759.jpeg?auto=compress&cs=tinysrgb&w=400',
         year: 2020,
@@ -64,7 +64,7 @@ export const musicData = [
     },
     {
         id: 8,
-        title: 'Adonai',
+        name: 'Adonai',
         artist: 'Nathaniel Bassey',
         albumArt: 'https://images.pexels.com/photos/6953867/pexels-photo-6953867.jpeg?auto=compress&cs=tinysrgb&w=400',
         year: 2020,
@@ -73,7 +73,7 @@ export const musicData = [
     },
     {
         id: 9,
-        title: 'unstoppable',
+        name: 'unstoppable',
         artist: 'Lecrae',
         albumArt: 'https://images.pexels.com/photos/2489986/pexels-photo-2489986.jpeg?auto=compress&cs=tinysrgb&w=400',
         year: 2018,
@@ -82,7 +82,7 @@ export const musicData = [
     },
     {
         id: 10,
-        title: 'Names of God',
+        name: 'Names of God',
         artist: 'Nathaniel Bassey',
         albumArt: 'https://images.pexels.com/photos/2403054/pexels-photo-2403054.jpeg?auto=compress&cs=tinysrgb&w=400',
         year: 2021,
@@ -91,7 +91,7 @@ export const musicData = [
     },
     {
         id: 11,
-        title: 'Birthday Song',
+        name: 'Birthday Song',
         artist: 'Davido',
         albumArt: 'https://images.pexels.com/photos/894156/pexels-photo-894156.jpeg?auto=compress&cs=tinysrgb&w=400',
         year: 2010,
@@ -100,7 +100,7 @@ export const musicData = [
     },
     {
         id: 12,
-        title: 'Fine Lady',
+        name: 'Fine Lady',
         artist: 'wizkidayo',
         albumArt: 'https://images.unsplash.com/photo-1506010100053-cc98c49b6aa8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2l6a2lkfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60',
         year: 2017,
@@ -109,7 +109,7 @@ export const musicData = [
     },
     {
         id: 13,
-        title: 'Worries',
+        name: 'Worries',
         artist: 'Tems',
         albumArt: 'https://images.pexels.com/photos/6862365/pexels-photo-6862365.jpeg?auto=compress&cs=tinysrgb&w=400',
         year: 2020,
@@ -118,7 +118,7 @@ export const musicData = [
     },
     {
         id: 14,
-        title: 'Action Film',
+        name: 'Action Film',
         artist: 'M.I',
         albumArt: 'https://images.pexels.com/photos/8044178/pexels-photo-8044178.jpeg?auto=compress&cs=tinysrgb&w=400',
         year: 2008,
@@ -127,7 +127,7 @@ export const musicData = [
     },
     {
         id: 15,
-        title: 'Pain Dem',
+        name: 'Pain Dem',
         artist: 'Tiwa Savage',
         albumArt: 'https://images.pexels.com/photos/4315839/pexels-photo-4315839.jpeg?auto=compress&cs=tinysrgb&w=400',
         year: 2010,
@@ -136,7 +136,7 @@ export const musicData = [
     },
     {
         id: 16,
-        title: 'African giant',
+        name: 'African giant',
         artist: 'Burna boy',
         albumArt: 'https://images.pexels.com/photos/1885213/pexels-photo-1885213.jpeg?auto=compress&cs=tinysrgb&w=400',
         year: 2021,
@@ -145,7 +145,7 @@ export const musicData = [
     },
     {
         id: 17,
-        title: 'Sound',
+        name: 'Sound',
         artist: 'Dunsin Oyekan',
         albumArt: 'https://images.pexels.com/photos/4406759/pexels-photo-4406759.jpeg?auto=compress&cs=tinysrgb&w=400',
         year: 2019,
@@ -154,7 +154,7 @@ export const musicData = [
     },
     {
         id: 18,
-        title: 'Adonai',
+        name: 'Adonai',
         artist: 'Nathaniel Bassey',
         albumArt: 'https://images.pexels.com/photos/6953867/pexels-photo-6953867.jpeg?auto=compress&cs=tinysrgb&w=400',
         year: 2015,
@@ -163,7 +163,7 @@ export const musicData = [
     },
     {
         id: 19,
-        title: 'unstoppable',
+        name: 'unstoppable',
         artist: 'Lecrae',
         albumArt: 'https://images.pexels.com/photos/2489986/pexels-photo-2489986.jpeg?auto=compress&cs=tinysrgb&w=400',
         year: 2018,
@@ -172,7 +172,7 @@ export const musicData = [
     },
     {
         id: 20,
-        title: 'Names of God',
+        name: 'Names of God',
         artist: 'Nathaniel Bassey',
         albumArt: 'https://images.pexels.com/photos/2403054/pexels-photo-2403054.jpeg?auto=compress&cs=tinysrgb&w=400',
         year: 2020,
