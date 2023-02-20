@@ -9,20 +9,21 @@ import { apiConfig } from "./config/api";
 function App() {
   const baseUrl = apiConfig.baseUrl;
 
-  function createUser() {
+  async function createUser() {
     const userId = localStorage.getItem("userId");
 
     if (!userId) {
       const uniqueId = nanoid();
+      console.log(uniqueId);
 
       // create user
-      axios
+      await axios
         .post(`${baseUrl}/users/new`, { userId: uniqueId })
         .then((response) => {
           if (response.status == 201) {
             localStorage.setItem("userId", uniqueId);
           } else {
-            createUser();
+            return createUser();
           }
         });
     }
