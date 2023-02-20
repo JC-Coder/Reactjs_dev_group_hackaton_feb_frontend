@@ -22,6 +22,7 @@ function App() {
         .then((response) => {
           if (response.status == 201) {
             localStorage.setItem("userId", uniqueId);
+            window.location.reload(true);
           } else {
             return createUser();
           }
