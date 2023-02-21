@@ -7,6 +7,11 @@ export default function Notifications({
   showNotification,
   setShowNotification,
 }) {
+
+    function clearNotifications() {
+
+    }
+
   return (
     <aside
       className={`bg-black fixed p-4 top-0 right-0 h-screen z-50 w-[55vw] sm:w-[45vw] md:w-[35vw] transition ${

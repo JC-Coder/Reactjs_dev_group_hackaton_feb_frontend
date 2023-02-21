@@ -1,6 +1,7 @@
 import { BellAlertIcon, BellIcon } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
 import Notifications from "./Notifications";
+import { notificationArr } from "../constants/notificationArr";
 
 
 export default function Navbar() {
@@ -17,7 +18,7 @@ export default function Navbar() {
             />
           </button>
           <span className="absolute -top-1 -right-1 flex h-4 p-1 aspect-square items-center justify-center bg-red-500 rounded-full font-medium text-sm">
-            2
+            {notificationArr.length}
           </span>
         </div>
       </nav>
