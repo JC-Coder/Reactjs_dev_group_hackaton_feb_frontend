@@ -9,7 +9,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="sticky top-0 backdrop-blur-lg px-6 py-2  z-50 flex items-center justify-end">
+      <nav className="sticky top-0 backdrop-blur px-6 py-2  z-50 flex items-center justify-end">
         {/* <h1 className="text-white font-bold text-2xl">Navbar</h1> */}
         <div className="relative">
           <button onClick={() => setShowNotification(prev => !prev)}>
