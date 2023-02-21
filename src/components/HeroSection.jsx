@@ -33,7 +33,7 @@ export default function HeroSection() {
     <section
         className={`bg-gradient-to-b relative to-black ${''} h-80 md:h-96 `}
       >
-        <div className="h-80 md:h-96 custom-img bg-center bg-fixed bg-cover">
+        <div className="h-80 md:h-96 custom-img bg-center bg-fixed bg-cover rounded">
           {/* <img
             className="h-full w-full object-cover "
             src="https://images.pexels.com/photos/332688/pexels-photo-332688.jpeg?auto=compress&cs=tinysrgb&w=600"
