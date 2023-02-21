@@ -47,7 +47,7 @@ export default function HeroSection() {
           />
         </div>
         <h1 className="absolute animate-pulse bottom-0 font-medium text-4xl ml-auto p-2">
-          Now Playing <span className="text-orange-500">Music Title</span>
+          Now Playing <br></br><span className="text-orange-500 text-3xl">FEM</span> <span className='text-2xl'>By</span>  <span className="text-orange-500 text-3xl">Davido</span>
         </h1>
       </section>
   )

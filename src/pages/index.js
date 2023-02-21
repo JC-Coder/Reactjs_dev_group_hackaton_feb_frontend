@@ -1,2 +1,2 @@
 export { default as Users } from "./Users";
-export { default as Dj } from "./Dj";
+export { default as Dj } from "./DJ";

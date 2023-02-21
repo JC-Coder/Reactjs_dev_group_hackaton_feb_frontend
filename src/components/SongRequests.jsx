@@ -1,55 +1,49 @@
 import { useEffect, useState } from "react";
 import { musicData } from "../constants/musicData";
-import { useSelector, useDispatch } from "react-redux";
-import { clearHistory } from "../features/history/history-slice";
 import MusicCard from "./MusicCard";
 import Navbar from "./Navbar";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import CustomRequest from "./CustomRequest";
-import { nanoid } from "@reduxjs/toolkit";
 import "react-toastify/dist/ReactToastify.css";
 import HeroSection from "./HeroSection";
-
-
-// check this again
-function generateUserId() {
-    const userId = nanoid()
-    return userId
-}
-
+import HistoryCard from "./HistoryCard";
+import axios from "axios";
+import { apiConfig } from "../config/api";
+import { helperFunction } from "../helper/helper";
 
 export default function SongRequests() {
-  const history = useSelector((state) => state.history.historyData);
-  const dispatch = useDispatch();
+  const [history, setHistory] = useState([]);
+  const baseUrl = apiConfig.baseUrl;
+  const userId = helperFunction.getUserId();
 
+  // get user music request history
   useEffect(() => {
-    generateUserId()
+    axios
+      .get(`${baseUrl}/users/requests/${userId}`)
+      .then((response) => setHistory(() => response.data));
   }, []);
-  
 
-
-  const notify = () =>
-    toast.warning("history cleared", {
-      position: "top-right",
-      autoClose: 500,
-      hideProgressBar: true,
-      closeOnClick: true,
-      theme: "colored",
-    });
-
-    function handleClearHistory() {
-    dispatch(clearHistory());
-    if (history.length > 0) {
-      notify();
+  function handleClearHistory() {
+    if(history.length < 1){
+      helperFunction.notifyFail('No history to clear');
+      return;
     }
-  }
 
+    axios.post(`${baseUrl}/users/requests/clear/${userId}`).then((response) => {
+      console.log(response);
+      helperFunction.notifySuccess('History Cleared');
+      setHistory({});
+    }).catch(err => {
+      helperFunction.notifyFail('Error Occured try again')
+    })
+  }
 
   return (
     <div className="flex-grow bg-[#1e1e1e] text-white h-screen overflow-y-scroll scrollbar-hide">
       <Navbar />
       {/* Hero component */}
       <HeroSection />
+
       <section className="px-2">
         <CustomRequest />
       </section>
@@ -67,7 +61,7 @@ export default function SongRequests() {
         </div>
         <div className="flex space-x-2 p-2 snap-x snap-mandatory overflow-x-scroll scrollbar-hide">
           {history.length > 0 ? (
-            history.map((item) => <MusicCard key={item.id} {...item} />)
+            history.map((item) => <HistoryCard key={item.id} {...item} />)
           ) : (
             <p className="text-gray-500">No current history</p>
           )}
