@@ -26,7 +26,7 @@ export default function Notifications({
       </div>
       <hr className="border-gray-500" />
       <div className="space-y-2 relative p-2">
-        <div className="overflow-y-scroll scrollbar-hide space-y-2">
+        <div className="overflow-y-scroll h-[500px] scrollbar-hide space-y-2">
           {notificationArr.map((item) => (
               <SingleNotification key={item._id} {...item} />
           ))}

@@ -5,7 +5,7 @@ export default function SingleNotification({_id, title, message, createdAt, upta
 
   return (
     <div className="flex gap-2 items-center rounded border p-2 border-gray-700">
-        <div>
+        <div className='hidden md:inline-flex'>
           <PlayCircleIcon className="h-6 w-6 text-blue-300" />
         </div>
         <div>
