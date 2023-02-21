@@ -1,7 +1,8 @@
 import React from 'react'
 import { PlayIcon, PlayCircleIcon } from "@heroicons/react/24/solid";
 
-export default function SingleNotification({ title, message, createdAt, uptadedAt }) {
+export default function SingleNotification({_id, title, message, createdAt, uptadedAt }) {
+
   return (
     <div className="flex gap-2 items-center rounded border p-2 border-gray-700">
         <div>

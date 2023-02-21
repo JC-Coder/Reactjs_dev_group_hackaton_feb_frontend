@@ -15,14 +15,8 @@ import React, {useState, useEffect} from 'react'
 
 
 export default function HeroSection() {
-    const [gradient, setGradient] = useState("");
-
-    useEffect(() => {
-        // getRandomGradient()
-    }, [])
-
-
-
+  // const [gradient, setGradient] = useState("");
+  
   //   function getRandomGradient() {
   //    let randomNumber = Math.floor(Math.random() * gradients.length);
   //    setGradient(gradients[randomNumber]);
