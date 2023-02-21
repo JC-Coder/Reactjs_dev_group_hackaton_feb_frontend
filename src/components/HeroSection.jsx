@@ -39,12 +39,12 @@ export default function HeroSection() {
     <section
         className={`bg-gradient-to-b relative to-black ${''} h-80 md:h-96 `}
       >
-        <div className="h-80 md:h-96">
-          <img
+        <div className="h-80 md:h-96 custom-img bg-top bg-fixed bg-contain">
+          {/* <img
             className="h-full w-full object-cover "
             src="https://images.pexels.com/photos/332688/pexels-photo-332688.jpeg?auto=compress&cs=tinysrgb&w=600"
             alt=""
-          />
+          /> */}
         </div>
         <h1 className="absolute animate-pulse bottom-0 font-medium text-4xl ml-auto p-2">
           Now Playing <br></br><span className="text-orange-500 text-3xl">FEM</span> <span className='text-2xl'>By</span>  <span className="text-orange-500 text-3xl">Davido</span>
