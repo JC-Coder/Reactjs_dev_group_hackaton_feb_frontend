@@ -1,13 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { musicData } from "../constants/musicData";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { clearHistory } from "../features/history/history-slice";
-import MusicCard from "./MusicCard";
 import Navbar from "./Navbar";
-import { TrashIcon } from "@heroicons/react/24/outline";
-import CustomRequest from "./CustomRequest";
 import { nanoid } from "@reduxjs/toolkit";
-import "react-toastify/dist/ReactToastify.css";
 import HeroSection from "./HeroSection";
 import HistoryCard from "./HistoryCard";
 import MusicCardDj from "./MusicCardDj";

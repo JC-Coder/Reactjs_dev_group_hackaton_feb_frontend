@@ -1,31 +1,12 @@
 import React from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { apiConfig } from "../config/api";
 import { helperFunction } from "../helper/helper";
 
+
 export default function MusicCard(item) {
   const baseUrl = apiConfig.baseUrl;
   const userId = helperFunction.getUserId();
-
-  const notifySuccess = (message) =>
-    toast.success(message, {
-      position: "top-right",
-      autoClose: 500,
-      hideProgressBar: true,
-      closeOnClick: true,
-      theme: "colored",
-    });
-
-  const notifyFail = (message) =>
-    toast.error(message, {
-      position: "top-right",
-      autoClose: 2000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      theme: "colored",
-    });
 
   function handleRequest(id) {
     axios
@@ -35,17 +16,16 @@ export default function MusicCard(item) {
       })
       .then((response) => {
         if (response.status == 201) {
-          notifySuccess("Request Successful");
+          helperFunction.notifySuccess("Request Successful");
         }
       })
       .catch((err) => {
-        notifyFail(err.response.data.message);
+        helperFunction.notifyFail(err.response.data.message);
       });
   }
 
   return (
     <div className="cursor-pointer group bg-[#181818] p-4 rounded-lg hover:bg-[#282828] shadow-md transition-all duration-150">
-      <ToastContainer />
       <div className="relative h-36 w-36 snap-center">
         <img
           className="h-full w-full object-cover rounded-lg "

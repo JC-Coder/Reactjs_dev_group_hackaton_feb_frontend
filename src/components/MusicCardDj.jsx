@@ -1,35 +1,25 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addHistory } from "../features/history/history-slice";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
+import { helperFunction } from "../helper/helper";
 
 
 export default function MusicCardDj(item) {
     const currentHistory = useSelector((state) => state.history.historyData);
   const dispatch = useDispatch();
 
-  const notify = () => toast.success("request successful", {
-    position: 'top-right',
-    autoClose: 500,
-    hideProgressBar: true,
-    closeOnClick: true,
-    theme: 'colored'
-  });
 
   function handleRequest(id) {
     const requestAlreadyExists = currentHistory.find((item) => item.id === id)
     if (!requestAlreadyExists) {
         dispatch(addHistory(item));
-        notify();
+        helperFunction.notifySuccess('Request successful');
     }
   }
 
   
   return (
     <div className="cursor-pointer group bg-[#181818] p-4 rounded-lg hover:bg-[#282828] shadow-md transition-all duration-150">
-      <ToastContainer />      
       <div className="relative h-36 w-36 snap-center">
         <img
           className="h-full w-full object-cover rounded-lg "

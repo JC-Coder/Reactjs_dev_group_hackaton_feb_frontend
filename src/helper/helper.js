@@ -1,24 +1,39 @@
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { Store } from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
+
+
+ const defaultNotification = {
+  title: "success message!",
+  message: "teodosii@react-notifications-component",
+  type: "success",
+  insert: "top",
+  container: "top-right",
+  animationIn: ["animate__animated", "animate__fadeIn"],
+  animationOut: ["animate__animated", "animate__fadeOut"],
+  dismiss: {
+    duration: 2000,
+    onScreen: true,
+  },
+};
+
 
 export const helperFunction = {
   getUserId: () => localStorage.getItem("userId"),
-  notifySuccess: (message) => {
-    toast.success(message, {
-      position: "top-right",
-      autoClose: 500,
-      hideProgressBar: true,
-      closeOnClick: true,
-      theme: "colored",
-    });
+  
+  notifySuccess(message) {
+    Store.addNotification({
+      ...defaultNotification,
+      message,
+    })
   },
-  notifyFail: (message) => {
-    toast.error(message, {
-      position: "top-right",
-      autoClose: 2000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      theme: "colored",
-    });
-  },
-};
+
+  notifyFail(message) {
+    Store.addNotification({
+      ...defaultNotification,
+      type: 'danger',
+      title: "Error",
+      message,
+    })
+  }
+
+}
