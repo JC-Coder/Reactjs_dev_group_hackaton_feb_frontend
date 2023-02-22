@@ -15,3 +15,11 @@
 .custom-img {
   background-image: url("https://images.pexels.com/photos/2470088/pexels-photo-2470088.jpeg?auto=compress&cs=tinysrgb&w=auto");
 }
+
+/* From https://css.glass */
+.glass-effect {
+  background: rgba(0, 0, 0, 0.28);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.4px);
+  -webkit-backdrop-filter: blur(8.4px);
+}

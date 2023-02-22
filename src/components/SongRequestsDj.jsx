@@ -29,7 +29,7 @@ export default function SongRequestsDj() {
       {/* Hero component */}
       <HeroSection />
 
-      <div className="px-2 relative  mx-auto max-w-7xl  p-3">
+      <div className="px-2 relative  mx-auto max-w-[1220px]  p-3">
         <section className="new-requests">
           <div className="flex justify-between items-center">
             <h2 className="font-medium text-2xl my-2">Music Requests</h2>

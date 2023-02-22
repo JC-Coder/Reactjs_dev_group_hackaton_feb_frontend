@@ -50,6 +50,7 @@ function App() {
         {
           path: "/dj",
           element: <Dj />,
+          errorElement: <div>Page not Found</div>,
         },
       ],
     },
