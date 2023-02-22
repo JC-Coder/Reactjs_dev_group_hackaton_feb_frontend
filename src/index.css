@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities
+@tailwind utilities;
+
+@layer base {
+  .dj-btn-styles {
+    @apply font-medium block mt-2 text-xs active:scale-90 transition bg-white text-[#1e1e1e] hover:text-white hover:bg-blue-400 px-2 py-1 rounded;
+  }
+
+  .dj-music-card {
+    @apply cursor-pointer bg-[#181818] p-4 rounded-lg hover:bg-[#282828] shadow-md transition-all duration-150;
+  }
+}
