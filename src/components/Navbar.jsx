@@ -1,6 +1,7 @@
 import { BellAlertIcon, BellIcon } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
 import Notifications from "./Notifications";
+import { notificationArr } from "../constants/notificationArr";
 
 
 export default function Navbar() {
@@ -8,7 +9,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="sticky top-0 backdrop-blur-lg px-6 py-2  z-50 flex items-center justify-end">
+      <nav className="sticky top-0 backdrop-blur px-6 py-2  z-50 flex items-center justify-end">
         {/* <h1 className="text-white font-bold text-2xl">Navbar</h1> */}
         <div className="relative">
           <button onClick={() => setShowNotification(prev => !prev)}>
@@ -17,7 +18,7 @@ export default function Navbar() {
             />
           </button>
           <span className="absolute -top-1 -right-1 flex h-4 p-1 aspect-square items-center justify-center bg-red-500 rounded-full font-medium text-sm">
-            2
+            {notificationArr.length}
           </span>
         </div>
       </nav>
