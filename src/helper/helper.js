@@ -21,4 +21,27 @@ export const helperFunction = {
       theme: "colored",
     });
   },
+  notify: (message, type = "success") => {
+    toast[type](message, {
+      position: "top-right",
+      autoClose: 500,
+      hideProgressBar: true,
+      closeOnClick: true,
+      theme: "colored",
+    });
+  },
 };
+
+// const existingItem = state.played.findIndex(
+//   (request) => request._id === action.payload._id
+// );
+// if (existingItem < 0) {
+//   helperFunction.notify("Added to played songs");
+//   state.played.push(action.payload);
+// } else {
+//   helperFunction.notify("Song already in played List", "error");
+// }
+// const filterRequests = state.musicRequests.findIndex(
+//   (request) => request._id === action.payload._id
+// );
+// state.musicRequests.splice(filterRequests, 1);
