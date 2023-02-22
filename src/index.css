@@ -11,3 +11,7 @@
     @apply cursor-pointer bg-[#181818] p-4 rounded-lg hover:bg-[#282828] shadow-md transition-all duration-150;
   }
 }
+
+.custom-img {
+  background-image: url("https://images.pexels.com/photos/2470088/pexels-photo-2470088.jpeg?auto=compress&cs=tinysrgb&w=auto");
+}
