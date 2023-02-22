@@ -14,7 +14,6 @@ function App() {
 
     if (!userId) {
       const uniqueId = nanoid();
-      console.log(uniqueId);
 
       // create user
       await axios

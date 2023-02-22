@@ -1,16 +1,34 @@
 import { LockClosedIcon, XCircleIcon } from "@heroicons/react/24/outline";
 import { PlayIcon, PlayCircleIcon } from "@heroicons/react/24/solid";
+import { useEffect, useState } from "react";
+import { apiConfig } from "../config/api";
 import { notificationArr } from "../constants/notificationArr";
+import { helperFunction } from "../helper/helper";
 import SingleNotification from "./SingleNotification";
+import axios from "axios";
 
 export default function Notifications({
   showNotification,
   setShowNotification,
 }) {
+  const [notifications, setNotifications] = useState([]);
+  const userId = '1234'
+  const baseUrl = apiConfig.baseUrl;
 
-    function clearNotifications() {
-
+  // get user music request history
+  useEffect(() => {
+    if (window.location.href.split("/")[3] == "dj") {
+      axios
+        .get(`${baseUrl}/dj/notifications`)
+        .then((response) => setNotifications(response.data));
+    } else {
+      axios
+        .get(`${baseUrl}/users/notifications/${userId}`)
+        .then((response) => setNotifications(response.data));
     }
+  }, []);
+
+  function clearNotifications() {}
 
   return (
     <aside
@@ -27,8 +45,8 @@ export default function Notifications({
       <hr className="border-gray-500" />
       <div className="space-y-2 relative p-2">
         <div className="overflow-y-scroll h-[500px] scrollbar-hide space-y-2">
-          {notificationArr.map((item) => (
-              <SingleNotification key={item._id} {...item} />
+          {notifications.map((item) => (
+            <SingleNotification key={item._id} {...item} />
           ))}
         </div>
         {/* <div className="h-20 w-full absolute top-60  left-0 bg-gradient-to-t from-black" /> */}

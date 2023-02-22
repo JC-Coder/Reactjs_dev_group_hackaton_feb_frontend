@@ -21,7 +21,8 @@
     "react-router-dom": "^6.8.1",
     "react-toastify": "^9.1.1",
     "redux": "^4.2.1",
-    "tailwind-scrollbar-hide": "^1.1.7"
+    "tailwind-scrollbar-hide": "^1.1.7",
+    "timeago.js": "^4.0.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
