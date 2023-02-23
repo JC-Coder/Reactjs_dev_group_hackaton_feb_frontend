@@ -31,7 +31,6 @@ export default function Navbar() {
     return () => {
       channel.unbind("user-notification-count", handleNotification);
       channel.unbind("dj-notification-count", handleNotification);
-      unsubscribePusherInstance();
     };
   }, []);
 
