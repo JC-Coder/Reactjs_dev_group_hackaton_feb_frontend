@@ -20,6 +20,14 @@ function Naviagtion() {
         >
           DJ
         </NavLink>
+        <NavLink
+          to="./auth"
+          className={({ isActive }) =>
+            isActive ? "border-b-red-500 border-b " : ""
+          }
+        >
+          DJ
+        </NavLink>
       </ul>
     </nav>
   );

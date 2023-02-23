@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { musicData } from "../constants/musicData";
+import { newMusic } from "../constants/newMusic";
 import MusicCard from "./MusicCard";
 import Navbar from "./Navbar";
 import { TrashIcon } from "@heroicons/react/24/outline";
@@ -86,13 +87,13 @@ export default function SongRequests() {
         </div>
         <h2 className="font-medium text-2xl my-2">Popular Requests</h2>
         <div className="flex space-x-2 p-2 snap-x snap-mandatory overflow-x-scroll scrollbar-hide">
-          {musicData.map((item) => (
+          {newMusic.slice(0, 20).map((item) => (
             <MusicCard key={item.id} {...item} />
           ))}
         </div>
         <h2 className="font-medium text-2xl my-2"> Recommended songs</h2>
         <div className="flex space-x-2 p-2 snap-x snap-mandatory overflow-x-scroll scrollbar-hide">
-          {musicData.map((item) => (
+          {newMusic.slice(21, 41).map((item) => (
             <MusicCard key={item.id} {...item} />
           ))}
         </div>

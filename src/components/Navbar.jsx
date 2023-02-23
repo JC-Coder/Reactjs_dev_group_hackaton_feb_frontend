@@ -1,6 +1,8 @@
 import { BellIcon } from "@heroicons/react/24/outline";
 import React, { useState, useEffect } from "react";
 import Notifications from "./Notifications";
+import { notificationArr } from "../constants/notificationArr";
+import Overlay from "./Overlay";
 import Pusher from "pusher-js";
 
 export default function Navbar() {
@@ -55,6 +57,8 @@ export default function Navbar() {
           )}
         </div>
       </nav>
+        <Notifications showNotification={showNotification} setShowNotification={setShowNotification} />
+        <Overlay isOpen={showNotification} onClick={() => setShowNotification(prev => !prev)} />
       <Notifications
         showNotification={showNotification}
         setShowNotification={setShowNotification}

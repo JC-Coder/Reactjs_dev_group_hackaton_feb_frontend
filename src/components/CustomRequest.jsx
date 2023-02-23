@@ -34,7 +34,8 @@ export default function CustomRequest() {
       }
     })
     .catch((err) => {
-      helperFunction.notifyFail(err.response.data.message);
+      console.log(err)
+      helperFunction.notifyFail(err.message);
     });
   }
 

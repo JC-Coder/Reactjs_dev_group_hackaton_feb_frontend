@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { RootLayout } from "./Layout";
-import { Dj, Users } from "./pages";
+import { Dj, Users, DjAuth } from "./pages";
 import { nanoid } from "@reduxjs/toolkit";
 import { useEffect } from "react";
 import axios from "axios";
@@ -49,6 +49,10 @@ function App() {
         {
           path: "/dj",
           element: <Dj />,
+        },
+        {
+          path: "/auth",
+          element: <DjAuth />,
         },
       ],
     },
