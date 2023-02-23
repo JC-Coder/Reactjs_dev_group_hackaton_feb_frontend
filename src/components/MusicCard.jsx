@@ -34,7 +34,8 @@ export default function MusicCard(item) {
         />
       </div>
       <div className="pt-2">
-        <h2 className="text-white font-medium">{item.name}</h2>
+        {/* <h2 title={item.name} className="text-white font-medium">{item.name.slice(0, 12)} ...</h2> */}
+        <h2 title={item.name} className="text-gray-200 font-medium">{item.name.length > 13 ? item.name.slice(0, 13) + ' ...' : item.name}</h2>
         <span className="text-sm text-gray-400">{item.artist}</span>
         {/* <span className="text-gray-500 text-xs ml-2 ">{item.year}</span> */}
         <button
