@@ -26,6 +26,7 @@ export default function CustomRequest() {
       name: songTitle,
       artist: artistName,
       userId: userId,
+      albumArt: 'https://res.cloudinary.com/dsg6otcag/image/upload/v1677182474/disk-image_kujx6e.png'
     })
     .then((response) => {
       if (response.status == 201) {

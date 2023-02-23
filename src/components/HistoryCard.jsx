@@ -10,10 +10,7 @@ export default function HistoryCard(item) {
       <div className="relative h-36 w-36 snap-center">
         <img
           className="h-full w-full object-cover rounded-lg "
-          src={`${
-            item.albumArt ??
-            "https://images.pexels.com/photos/6862365/pexels-photo-6862365.jpeg?auto=compress&cs=tinysrgb&w=400"
-          }`}
+          src={item.albumArt}
           alt="album art"
         />
       </div>
