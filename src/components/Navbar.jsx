@@ -2,6 +2,7 @@ import { BellAlertIcon, BellIcon } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
 import Notifications from "./Notifications";
 import { notificationArr } from "../constants/notificationArr";
+import Overlay from "./Overlay";
 
 
 export default function Navbar() {
@@ -23,6 +24,7 @@ export default function Navbar() {
         </div>
       </nav>
         <Notifications showNotification={showNotification} setShowNotification={setShowNotification} />
+        <Overlay isOpen={showNotification} onClick={() => setShowNotification(prev => !prev)} />
     </>
   );
 }
