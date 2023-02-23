@@ -1,8 +1,6 @@
 import { LockClosedIcon, XCircleIcon } from "@heroicons/react/24/outline";
-import { PlayIcon, PlayCircleIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 import { apiConfig } from "../config/api";
-import { notificationArr } from "../constants/notificationArr";
 import { helperFunction } from "../helper/helper";
 import SingleNotification from "./SingleNotification";
 import axios from "axios";
@@ -43,8 +41,6 @@ export default function Notifications({
     });
   }
 
-  function clearNotifications() {}
-
   return (
     <aside
       className={`bg-black fixed p-4 top-0 right-0 h-screen z-50 w-[55vw] sm:w-[45vw] md:w-[35vw] transition ${
@@ -64,7 +60,6 @@ export default function Notifications({
             <SingleNotification key={item._id} {...item} />
           ))}
         </div>
-        {/* <div className="h-20 w-full absolute top-60  left-0 bg-gradient-to-t from-black" /> */}
       </div>
     </aside>
   );

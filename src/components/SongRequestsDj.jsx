@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { musicData } from "../constants/musicData";
 import Navbar from "./Navbar";
 import "react-toastify/dist/ReactToastify.css";
 import HeroSection from "./HeroSection";
@@ -30,7 +29,7 @@ export default function SongRequestsDj() {
 
   // update all request on user history clear
   channel.bind("all-requests", (data) => {
-    setRequests(data.data)
+    setRequests(data.data);
     channel.unbind("all-requests");
   });
 
@@ -84,7 +83,8 @@ export default function SongRequestsDj() {
         <section className="played-songs">
           <h2 className="font-medium text-2xl my-2"> Unavailable Songs</h2>
           <div className="flex space-x-2 p-2 snap-x snap-mandatory overflow-x-scroll scrollbar-hide">
-          {requests.filter((item) => item.status == "unavailable").length > 0 ? (
+            {requests.filter((item) => item.status == "unavailable").length >
+            0 ? (
               requests
                 .filter((item) => item.status == "unavailable")
                 .map((item) => <HistoryCard key={item.id} {...item} />)

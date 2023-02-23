@@ -1,6 +1,5 @@
 import { BellIcon } from "@heroicons/react/24/outline";
 import React, { useState, useEffect } from "react";
-import { channel, unsubscribePusherInstance } from "../config/pusher";
 import Notifications from "./Notifications";
 import Pusher from "pusher-js";
 

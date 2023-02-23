@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { apiConfig } from "../config/api";
 import { helperFunction } from "../helper/helper";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
 
 export default function CustomRequest() {
   const [songTitle, setSongTitle] = useState("");
@@ -10,24 +9,6 @@ export default function CustomRequest() {
 
   const baseUrl = apiConfig.baseUrl;
   const userId = helperFunction.getUserId();
-
-  const notifySuccess = (message) =>
-    toast.success(message, {
-      position: "top-right",
-      autoClose: 500,
-      hideProgressBar: true,
-      closeOnClick: true,
-      theme: "colored",
-    });
-
-  const notifyFail = (message) =>
-    toast.error(message, {
-      position: "top-right",
-      autoClose: 2000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      theme: "colored",
-    });
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -37,7 +18,7 @@ export default function CustomRequest() {
     setSongTitle("");
 
     if(!songTitle || !artistName){
-      notifyFail('Song name and artist name is required');
+      helperFunction.notifyFail('Song name and artist name is required');
     }
 
     axios
@@ -48,11 +29,11 @@ export default function CustomRequest() {
     })
     .then((response) => {
       if (response.status == 201) {
-        notifySuccess("Request Successful");
+        helperFunction.notifySuccess("Request Successful");
       }
     })
     .catch((err) => {
-      notifyFail(err.response.data.message);
+      helperFunction.notifyFail(err.response.data.message);
     });
   }
 

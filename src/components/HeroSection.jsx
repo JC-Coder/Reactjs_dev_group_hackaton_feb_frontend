@@ -11,7 +11,7 @@ export default function HeroSection() {
   // get now playing 
   useEffect(() => {
     axios.get(`${baseUrl}/dj/now-playing`).then(res => {
-      if(res.data) {
+      if(!Object.keys(res.data).length < 1) {
         setNowPlaying(res.data);
       }
     })

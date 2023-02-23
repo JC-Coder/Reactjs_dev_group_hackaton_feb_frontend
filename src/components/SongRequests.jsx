@@ -90,7 +90,6 @@ export default function SongRequests() {
             <MusicCard key={item.id} {...item} />
           ))}
         </div>
-        {/* <div className="absolute bg-gradient-to-l from-white/30 top-12 rounded-lg right-2 h-[178px] w-2/12" /> */}
         <h2 className="font-medium text-2xl my-2"> Recommended songs</h2>
         <div className="flex space-x-2 p-2 snap-x snap-mandatory overflow-x-scroll scrollbar-hide">
           {musicData.map((item) => (
