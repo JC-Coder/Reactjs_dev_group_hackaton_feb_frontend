@@ -6,7 +6,7 @@ import {format} from 'timeago.js';
 export default function SingleNotification({_id, title, message, createdAt, uptadedAt }) {
 
   return (
-    <div className="flex gap-2 items-center rounded border p-2 border-gray-700">
+    <div className="bg-black flex gap-2 items-center rounded p-2 border-gray-700">
         <div className='hidden md:inline-flex'>
           <PlayCircleIcon className="h-6 w-6 text-blue-300" />
         </div>
