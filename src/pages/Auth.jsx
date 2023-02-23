@@ -11,7 +11,6 @@ export default function Auth() {
   }
 
   return (
-    <>
     <div className="bg-[#1e1e1e] h-screen flex justify-center items-center">
       <div className="bg-gray-100 w-80 p-4 rounded">
         <div className="mb-4">
@@ -41,13 +40,5 @@ export default function Auth() {
         </form>
       </div>
     </div>
-      <div className="flex">
-        {
-          newMusic.map((item) => (
-            <MusicCard key={item.id} {...item} />
-            ))
-          }
-      </div>
-          </>
   );
 }
