@@ -34,6 +34,15 @@ export const helperFunction = {
       title: "Error",
       message,
     })
+  },
+
+  notifyInfo(message) {
+    Store.addNotification({
+      ...defaultNotification,
+      type: 'info',
+      title: 'info',
+      message,
+    })
   }
 
 }
