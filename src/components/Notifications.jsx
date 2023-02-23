@@ -6,13 +6,14 @@ import { notificationArr } from "../constants/notificationArr";
 import { helperFunction } from "../helper/helper";
 import SingleNotification from "./SingleNotification";
 import axios from "axios";
+import { channel } from "../config/pusher";
 
 export default function Notifications({
   showNotification,
   setShowNotification,
 }) {
   const [notifications, setNotifications] = useState([]);
-  const userId = '1234'
+  const userId = helperFunction.getUserId()
   const baseUrl = apiConfig.baseUrl;
 
   // get user music request history
@@ -21,10 +22,25 @@ export default function Notifications({
       axios
         .get(`${baseUrl}/dj/notifications`)
         .then((response) => setNotifications(response.data));
+
+        
+      // update dj notification with pusher
+      channel.bind("dj-new-notification", (data) => {
+        console.log({djNotification: data.data})
+        setNotifications([data.data, ...notifications]);
+        channel.unbind("dj-new-notification");
+      });
     } else {
       axios
         .get(`${baseUrl}/users/notifications/${userId}`)
         .then((response) => setNotifications(response.data));
+
+      // update user notification with pusher
+      channel.bind("user-new-notification", (data) => {
+        console.log({userNotification: data.data})
+        setNotifications([data.data, ...notifications]);
+        channel.unbind("user-new-notification");
+      });
     }
   }, []);
 

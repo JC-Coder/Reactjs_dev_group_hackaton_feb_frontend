@@ -1,45 +1,32 @@
 import { useEffect, useState } from "react";
 import { musicData } from "../constants/musicData";
-import { useSelector, useDispatch } from "react-redux";
-import { clearHistory } from "../features/history/history-slice";
-import MusicCard from "./MusicCard";
 import Navbar from "./Navbar";
-import { TrashIcon } from "@heroicons/react/24/outline";
-import CustomRequest from "./CustomRequest";
-import { nanoid } from "@reduxjs/toolkit";
 import "react-toastify/dist/ReactToastify.css";
 import HeroSection from "./HeroSection";
 import HistoryCard from "./HistoryCard";
 import MusicCardDj from "./MusicCardDj";
-
-// check this again
-function generateUserId() {
-  const userId = nanoid();
-  return userId;
-}
+import axios from "axios";
+import { apiConfig } from "../config/api";
+import { helperFunction } from "../helper/helper";
+import { channel } from "../config/pusher";
 
 export default function SongRequestsDj() {
-  const dispatch = useDispatch();
+  const [requests, setRequests] = useState([]);
+  const baseUrl = apiConfig.baseUrl;
+  const userId = helperFunction.getUserId();
 
+  // get all requests
   useEffect(() => {
-    generateUserId();
+    axios.get(`${baseUrl}/dj/requests`).then((response) => {
+      setRequests(() => response.data);
+    });
   }, []);
 
-  const notify = () =>
-    toast.warning("history cleared", {
-      position: "top-right",
-      autoClose: 500,
-      hideProgressBar: true,
-      closeOnClick: true,
-      theme: "colored",
-    });
-
-  function handleClearHistory() {
-    dispatch(clearHistory());
-    if (history.length > 0) {
-      notify();
-    }
-  }
+  // update requests with pusher
+  channel.bind("user-new-request", (data) => {
+    setRequests([...requests, data.data]);
+    channel.unbind("user-new-request");
+  });
 
   return (
     <div className="flex-grow bg-[#1e1e1e] text-white h-screen overflow-y-scroll scrollbar-hide">
@@ -49,18 +36,27 @@ export default function SongRequestsDj() {
 
       <div className="px-2 relative">
         <section className="new-requests">
-         <div className="flex justify-between items-center">
-         <h2 className="font-medium text-2xl my-2">Music Requests</h2>
+          <div className="flex justify-between items-center">
+            <h2 className="font-medium text-2xl my-2">Music Requests</h2>
 
-         <select name="Sort By" id="sort" className="bg-[#111111] p-2 outline-none rounded-lg">
-          <option value="oldest">oldest</option>
-          <option value="latest">newest</option>
-         </select>
-         </div>
+            <select
+              name="Sort By"
+              id="sort"
+              className="bg-[#111111] p-2 outline-none rounded-lg"
+            >
+              <option value="oldest">oldest</option>
+              <option value="latest">newest</option>
+            </select>
+          </div>
           <div className="flex space-x-2 p-2 snap-x snap-mandatory overflow-x-scroll scrollbar-hide">
-            {musicData.map((item) => (
-              <MusicCardDj key={item.id} {...item} />
-            ))}
+            {requests.filter((item) => item.status == "not played").length >
+            0 ? (
+              requests
+                .filter((item) => item.status == "not played")
+                .map((item) => <MusicCardDj key={item.id} {...item} />)
+            ) : (
+              <p className="text-gray-500">No music request at the moment</p>
+            )}
           </div>
         </section>
 
@@ -69,18 +65,26 @@ export default function SongRequestsDj() {
         <section className="played-songs">
           <h2 className="font-medium text-2xl my-2"> Played Songs</h2>
           <div className="flex space-x-2 p-2 snap-x snap-mandatory overflow-x-scroll scrollbar-hide">
-            {musicData.map((item) => (
-              <HistoryCard key={item.id} {...item} />
-            ))}
+            {requests.filter((item) => item.status == "played").length > 0 ? (
+              requests
+                .filter((item) => item.status == "played")
+                .map((item) => <HistoryCard key={item.id} {...item} />)
+            ) : (
+              <p className="text-gray-500">No played songs</p>
+            )}
           </div>
         </section>
 
         <section className="played-songs">
           <h2 className="font-medium text-2xl my-2"> Unavailable Songs</h2>
           <div className="flex space-x-2 p-2 snap-x snap-mandatory overflow-x-scroll scrollbar-hide">
-            {musicData.map((item) => (
-              <HistoryCard key={item.id} {...item} />
-            ))}
+          {requests.filter((item) => item.status == "unavailable").length > 0 ? (
+              requests
+                .filter((item) => item.status == "unavailable")
+                .map((item) => <HistoryCard key={item.id} {...item} />)
+            ) : (
+              <p className="text-gray-500">No unavailable songs</p>
+            )}
           </div>
         </section>
       </div>

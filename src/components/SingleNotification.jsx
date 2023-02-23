@@ -1,5 +1,7 @@
 import React from 'react'
 import { PlayIcon, PlayCircleIcon } from "@heroicons/react/24/solid";
+import {format} from 'timeago.js';
+
 
 export default function SingleNotification({_id, title, message, createdAt, uptadedAt }) {
 
@@ -11,7 +13,7 @@ export default function SingleNotification({_id, title, message, createdAt, upta
         <div>
           <p className="text-sm whitespace-nowrap">{title}</p>
           <p className="text-xs text-gray-400">{message}</p>
-      <div className="text-xs my-2 place-items-end text-gray-400 ">{createdAt}</div>
+      <div className="text-xs my-2 place-items-end text-gray-400 ">{format(createdAt)}</div>
         </div>
     </div>
   );

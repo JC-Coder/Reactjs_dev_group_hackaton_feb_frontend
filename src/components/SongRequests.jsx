@@ -10,6 +10,7 @@ import HistoryCard from "./HistoryCard";
 import axios from "axios";
 import { apiConfig } from "../config/api";
 import { helperFunction } from "../helper/helper";
+import { channel, pusherInstance } from "../config/pusher";
 
 export default function SongRequests() {
   const [history, setHistory] = useState([]);
@@ -23,19 +24,30 @@ export default function SongRequests() {
       .then((response) => setHistory(() => response.data));
   }, []);
 
+  // update history with pusher
+  channel.bind("user-new-request", (data) => {
+    setHistory([data.data, ...history]);
+    channel.unbind("user-new-request");
+  });
+
   function handleClearHistory() {
-    if(history.length < 1){
-      helperFunction.notifyFail('No history to clear');
+    console.log(history.length);
+    console.log(history);
+
+    if (history.length < 1) {
+      helperFunction.notifyFail("No history to clear");
       return;
     }
 
-    axios.post(`${baseUrl}/users/requests/clear/${userId}`).then((response) => {
-      console.log(response);
-      helperFunction.notifySuccess('History Cleared');
-      setHistory({});
-    }).catch(err => {
-      helperFunction.notifyFail('Error Occured try again')
-    })
+    axios
+      .post(`${baseUrl}/users/requests/clear/${userId}`)
+      .then((response) => {
+        helperFunction.notifySuccess("History Cleared");
+        setHistory([]);
+      })
+      .catch((err) => {
+        helperFunction.notifyFail("Error Occured try again");
+      });
   }
 
   return (
