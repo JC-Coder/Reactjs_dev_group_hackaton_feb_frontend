@@ -28,6 +28,12 @@ export default function SongRequestsDj() {
     channel.unbind("user-new-request");
   });
 
+  // update all request on user history clear
+  channel.bind("all-requests", (data) => {
+    setRequests(data.data)
+    channel.unbind("all-requests");
+  });
+
   return (
     <div className="flex-grow bg-[#1e1e1e] text-white h-screen overflow-y-scroll scrollbar-hide">
       <Navbar />

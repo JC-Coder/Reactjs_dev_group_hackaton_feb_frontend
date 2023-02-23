@@ -1,24 +1,42 @@
 import { React, useEffect, useState } from "react";
-import { addHistory } from "../features/history/history-slice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { helperFunction } from "../helper/helper";
 import axios from "axios";
 import { apiConfig } from "../config/api";
+import { helperFunction } from "../helper/helper";
 
 export default function MusicCardDj(item) {
-  const baseUrl = apiConfig.baseUrl
+  const baseUrl = apiConfig.baseUrl;
+
   function markAsNowPlaying(item) {
     axios
-    .post(`${baseUrl}/dj/now-playing`, {name: item.name, artist: item.artist})
+      .post(`${baseUrl}/dj/now-playing`, {
+        name: item.name,
+        artist: item.artist,
+      })
+      .then((res) => {
+        if (res.status == 200) {
+          helperFunction.notifySuccess("Now Playing Set Success");
+        }
+      })
+      .catch((err) => {
+        if (err) {
+          helperFunction.notifyFail("Error Occured try again");
+        }
+      });
   }
 
-  function handleRequest(id) {
-    const requestAlreadyExists = currentHistory.find((item) => item.id === id);
-    if (!requestAlreadyExists) {
-      dispatch(addHistory(item));
-      helperFunction.notifySuccess("Request Successful");
-    }
+  function handleUpdate(id, status) {
+    axios
+      .put(`${baseUrl}/dj/requests`, { id, status })
+      .then((res) =>
+        helperFunction.notifySuccess("Song Request Update Success")
+      )
+      .catch((err) =>
+        err
+          ? helperFunction.notifyFail("Song request update failed, try again")
+          : ""
+      );
   }
 
   return (
@@ -43,13 +61,13 @@ export default function MusicCardDj(item) {
         </button>
         <button
           className="font-medium block mt-2 text-xs active:scale-90 transition bg-white text-[#1e1e1e] hover:text-white hover:bg-blue-400 px-2 py-1 rounded"
-          onClick={() => handleRequest(item.id)}
+          onClick={() => handleUpdate(item._id, "played")}
         >
           Mark as played
         </button>
         <button
           className="font-medium block mt-2 text-xs active:scale-90 transition bg-white text-[#1e1e1e] hover:text-white hover:bg-blue-400 px-2 py-1 rounded"
-          onClick={() => handleRequest(item.id)}
+          onClick={() => handleUpdate(item._id, "unavailable")}
         >
           Mark as unavailable
         </button>

@@ -30,10 +30,16 @@ export default function SongRequests() {
     channel.unbind("user-new-request");
   });
 
-  function handleClearHistory() {
-    console.log(history.length);
-    console.log(history);
+  // update request status
+  channel.bind("user-request-update", (data) => {
+    const newHistory = [...history];
+    const itemIndex = newHistory.findIndex(item => item._id == data.data._id);
+    newHistory[itemIndex] = {...newHistory[itemIndex], status: data?.data.status}
+    setHistory([...newHistory]);
+    channel.unbind("user-request-update");
+  });
 
+  function handleClearHistory() {
     if (history.length < 1) {
       helperFunction.notifyFail("No history to clear");
       return;

@@ -13,7 +13,7 @@ export default function Notifications({
   setShowNotification,
 }) {
   const [notifications, setNotifications] = useState([]);
-  const userId = helperFunction.getUserId()
+  const userId = helperFunction.getUserId();
   const baseUrl = apiConfig.baseUrl;
 
   // get user music request history
@@ -22,27 +22,26 @@ export default function Notifications({
       axios
         .get(`${baseUrl}/dj/notifications`)
         .then((response) => setNotifications(response.data));
-
-        
-      // update dj notification with pusher
-      channel.bind("dj-new-notification", (data) => {
-        console.log({djNotification: data.data})
-        setNotifications([data.data, ...notifications]);
-        channel.unbind("dj-new-notification");
-      });
     } else {
       axios
         .get(`${baseUrl}/users/notifications/${userId}`)
         .then((response) => setNotifications(response.data));
-
-      // update user notification with pusher
-      channel.bind("user-new-notification", (data) => {
-        console.log({userNotification: data.data})
-        setNotifications([data.data, ...notifications]);
-        channel.unbind("user-new-notification");
-      });
     }
   }, []);
+
+  if (window.location.href.split("/")[3] == "dj") {
+    // update dj notification with pusher
+    channel.bind("dj-new-notification", (data) => {
+      setNotifications([data.data, ...notifications]);
+      channel.unbind("dj-new-notification");
+    });
+  } else {
+    // update user notification with pusher
+    channel.bind("user-new-notification", (data) => {
+      setNotifications([data.data, ...notifications]);
+      channel.unbind("user-new-notification");
+    });
+  }
 
   function clearNotifications() {}
 
