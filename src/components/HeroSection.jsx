@@ -28,14 +28,11 @@ export default function HeroSection() {
 
   const [nowPlaying, setNowPlaying] = useState(null);
 
-  useEffect(() => {
     // update now playing
     channel.bind("now-playing", (data) => {
-      console.log(data.data);
       setNowPlaying(data.data);
       channel.unbind("now-playing");
     });
-  }, []);
 
   return (
     <section
