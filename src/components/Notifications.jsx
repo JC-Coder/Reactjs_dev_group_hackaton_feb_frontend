@@ -14,7 +14,7 @@ export default function Notifications({
 
   return (
     <aside
-      className={`bg-black fixed p-4 top-0 right-0 h-screen z-50 w-[55vw] sm:w-[45vw] md:w-[35vw] transition ${
+      className={`bg-black fixed p-4 top-0 right-0 h-screen z-50 w-[85vw] sm:w-[65vw] md:w-[45vw] transition ${
         showNotification ? "translate-x-0" : "translate-x-full"
       } `}
     >

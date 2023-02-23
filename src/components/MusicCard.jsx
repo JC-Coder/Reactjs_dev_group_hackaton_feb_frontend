@@ -20,7 +20,7 @@ export default function MusicCard(item) {
         }
       })
       .catch((err) => {
-        helperFunction.notifyFail(err.response.data.message);
+        helperFunction.notifyFail(err.message);
       });
   }
 
