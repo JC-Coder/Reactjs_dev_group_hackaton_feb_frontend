@@ -31,7 +31,7 @@ export default function Notifications({
               <SingleNotification key={item._id} {...item} />
           ))}
         </div>
-        {/* <div className="h-20 w-full absolute top-60  left-0 bg-gradient-to-t from-black" /> */}
+        <div className="h-40 w-full absolute bottom-0 left-0 bg-gradient-to-t from-black" />
       </div>
     </aside>
   );

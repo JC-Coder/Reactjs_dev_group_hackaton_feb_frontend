@@ -32,8 +32,7 @@ export default function SongRequests() {
     axios.post(`${baseUrl}/users/requests/clear/${userId}`).then((response) => {
       console.log(response);
       helperFunction.notifySuccess('History Cleared');
-      // set history to an empty  array instead of object
-      setHistory({});
+      setHistory([]);
     }).catch(err => {
       helperFunction.notifyFail('Error Occured try again')
     })
