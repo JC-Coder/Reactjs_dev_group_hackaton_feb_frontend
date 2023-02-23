@@ -26,6 +26,7 @@ export default function CustomRequest() {
       name: songTitle,
       artist: artistName,
       userId: userId,
+      albumArt: 'https://res.cloudinary.com/dsg6otcag/image/upload/v1677182474/disk-image_kujx6e.png'
     })
     .then((response) => {
       if (response.status == 201) {
@@ -33,8 +34,8 @@ export default function CustomRequest() {
       }
     })
     .catch((err) => {
-      console.log(err.message)
-      helperFunction.notifyFail(err.response.data);
+      console.log(err)
+      helperFunction.notifyFail(err.message);
     });
   }
 

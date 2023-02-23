@@ -8,7 +8,7 @@ export default function MusicCard(item) {
   const baseUrl = apiConfig.baseUrl;
   const userId = helperFunction.getUserId();
 
-  function handleRequest(id) {
+  function handleRequest() {
     axios
       .post(`${baseUrl}/users/request`, {
         ...item,
@@ -21,6 +21,7 @@ export default function MusicCard(item) {
       })
       .catch((err) => {
         helperFunction.notifyFail(err.message);
+        helperFunction.notifyFail(err.response.data.message);
       });
   }
 
@@ -37,7 +38,6 @@ export default function MusicCard(item) {
         {/* <h2 title={item.name} className="text-white font-medium">{item.name.slice(0, 12)} ...</h2> */}
         <h2 title={item.name} className="text-gray-200 font-medium">{item.name.length > 13 ? item.name.slice(0, 13) + ' ...' : item.name}</h2>
         <span className="text-sm text-gray-400">{item.artist}</span>
-        {/* <span className="text-gray-500 text-xs ml-2 ">{item.year}</span> */}
         <button
           className="font-medium block mt-2 text-xs active:scale-90 transition bg-white text-[#1e1e1e] hover:text-white hover:bg-blue-400 px-2 py-1 rounded"
           onClick={() => handleRequest(item.id)}

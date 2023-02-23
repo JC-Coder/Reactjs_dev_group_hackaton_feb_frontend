@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { musicData } from "../constants/musicData";
+import { newMusic } from "../constants/newMusic";
 import MusicCard from "./MusicCard";
 import Navbar from "./Navbar";
 import { TrashIcon } from "@heroicons/react/24/outline";
@@ -10,6 +11,7 @@ import HistoryCard from "./HistoryCard";
 import axios from "axios";
 import { apiConfig } from "../config/api";
 import { helperFunction } from "../helper/helper";
+import { channel, pusherInstance } from "../config/pusher";
 
 export default function SongRequests() {
   const [history, setHistory] = useState([]);
@@ -23,19 +25,36 @@ export default function SongRequests() {
       .then((response) => setHistory(() => response.data));
   }, []);
 
+  // update history with pusher
+  channel.bind("user-new-request", (data) => {
+    setHistory([data.data, ...history]);
+    channel.unbind("user-new-request");
+  });
+
+  // update request status
+  channel.bind("user-request-update", (data) => {
+    const newHistory = [...history];
+    const itemIndex = newHistory.findIndex(item => item._id == data.data._id);
+    newHistory[itemIndex] = {...newHistory[itemIndex], status: data?.data.status}
+    setHistory([...newHistory]);
+    channel.unbind("user-request-update");
+  });
+
   function handleClearHistory() {
-    if(history.length < 1){
-      helperFunction.notifyFail('No history to clear');
+    if (history.length < 1) {
+      helperFunction.notifyFail("No history to clear");
       return;
     }
 
-    axios.post(`${baseUrl}/users/requests/clear/${userId}`).then((response) => {
-      console.log(response);
-      helperFunction.notifySuccess('History Cleared');
-      setHistory([]);
-    }).catch(err => {
-      helperFunction.notifyFail('Error Occured try again')
-    })
+    axios
+      .post(`${baseUrl}/users/requests/clear/${userId}`)
+      .then((response) => {
+        helperFunction.notifySuccess("History Cleared");
+        setHistory([]);
+      })
+      .catch((err) => {
+        helperFunction.notifyFail("Error Occured try again");
+      });
   }
 
   return (
@@ -68,14 +87,13 @@ export default function SongRequests() {
         </div>
         <h2 className="font-medium text-2xl my-2">Popular Requests</h2>
         <div className="flex space-x-2 p-2 snap-x snap-mandatory overflow-x-scroll scrollbar-hide">
-          {musicData.map((item) => (
+          {newMusic.slice(0, 20).map((item) => (
             <MusicCard key={item.id} {...item} />
           ))}
         </div>
-        {/* <div className="absolute bg-gradient-to-l from-white/30 top-12 rounded-lg right-2 h-[178px] w-2/12" /> */}
         <h2 className="font-medium text-2xl my-2"> Recommended songs</h2>
         <div className="flex space-x-2 p-2 snap-x snap-mandatory overflow-x-scroll scrollbar-hide">
-          {musicData.map((item) => (
+          {newMusic.slice(21, 41).map((item) => (
             <MusicCard key={item.id} {...item} />
           ))}
         </div>

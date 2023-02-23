@@ -1,16 +1,45 @@
-import { LockClosedIcon, XCircleIcon } from "@heroicons/react/24/outline";
-import { PlayIcon, PlayCircleIcon } from "@heroicons/react/24/solid";
-import { notificationArr } from "../constants/notificationArr";
+import { XCircleIcon } from "@heroicons/react/24/outline";
+import { useEffect, useState } from "react";
+import { apiConfig } from "../config/api";
+import { helperFunction } from "../helper/helper";
 import SingleNotification from "./SingleNotification";
+import axios from "axios";
+import { channel } from "../config/pusher";
 
 export default function Notifications({
   showNotification,
   setShowNotification,
 }) {
+  const [notifications, setNotifications] = useState([]);
+  const userId = helperFunction.getUserId();
+  const baseUrl = apiConfig.baseUrl;
 
-    function clearNotifications() {
-
+  // get user music request history
+  useEffect(() => {
+    if (window.location.href.split("/")[3] == "dj") {
+      axios
+        .get(`${baseUrl}/dj/notifications`)
+        .then((response) => setNotifications(response.data));
+    } else {
+      axios
+        .get(`${baseUrl}/users/notifications/${userId}`)
+        .then((response) => setNotifications(response.data));
     }
+  }, []);
+
+  if (window.location.href.split("/")[3] == "dj") {
+    // update dj notification with pusher
+    channel.bind("dj-new-notification", (data) => {
+      setNotifications([data.data, ...notifications]);
+      channel.unbind("dj-new-notification");
+    });
+  } else {
+    // update user notification with pusher
+    channel.bind("user-new-notification", (data) => {
+      setNotifications([data.data, ...notifications]);
+      channel.unbind("user-new-notification");
+    });
+  }
 
   return (
     <aside
@@ -27,8 +56,8 @@ export default function Notifications({
       <hr className="border-gray-500" />
       <div className="space-y-2 relative p-2">
         <div className="overflow-y-scroll h-[500px] scrollbar-hide space-y-2">
-          {notificationArr.map((item) => (
-              <SingleNotification key={item._id} {...item} />
+          {notifications.map((item) => (
+            <SingleNotification key={item._id} {...item} />
           ))}
         </div>
         <div className="h-40 w-full absolute bottom-0 left-0 bg-gradient-to-t from-black" />
