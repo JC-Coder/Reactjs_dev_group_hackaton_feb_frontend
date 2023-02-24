@@ -30,7 +30,7 @@ Summary:
 
 ### 🖼️ Screenshot
 
-  ![image](https://user-images.githubusercontent.com/99423608/221169132-cc2a93ae-fac0-4efd-ba28-bab5bf12ba1e.png)
+  ![image](https://user-images.githubusercontent.com/99423608/221171347-f6ec4b00-6557-46eb-ab4c-2d7c9130e63a.png)
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -50,6 +50,13 @@ Summary:
 ## 📚 Usage 
   
 To use the GrooveDeck frontend, you can access the deployed version of the application on a web browser. The application provides a user-friendly interface for submitting song requests and viewing the list of all submitted requests. Real-time updates to the song request list are automatically displayed using Pusher.
+
+# routes
+  <ul>
+    <li>/user -> to access features of users </li>
+    <li>/auth -> to get access to dj page (this requires an access key) [key = groovedeck_auth]</li>
+    <li>/dj  -> to manage user requests </li>
+  </ul>
 
 ## 📚 Getting Started
 
