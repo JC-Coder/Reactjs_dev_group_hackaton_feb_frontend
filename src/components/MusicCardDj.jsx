@@ -2,6 +2,7 @@ import { React} from "react";
 import axios from "axios";
 import { apiConfig } from "../config/api";
 import { helperFunction } from "../helper/helper";
+// import { ReactNotifications } from "react-notifications-component";
 
 export default function MusicCardDj(item) {
   const baseUrl = apiConfig.baseUrl;
@@ -28,18 +29,18 @@ export default function MusicCardDj(item) {
     axios
       .put(`${baseUrl}/dj/requests`, { id, status })
       .then((res) =>
-        helperFunction.notifySuccess("Song Request Update Success")
+        helperFunction.notifyInfo(status)
       )
       .catch((err) =>
         err
-          ? helperFunction.notifyFail("Song request update failed, try again")
+          ? helperFunction.notifyFail(status)
           : ""
       );
   }
 
   return (
     <div className="cursor-pointer group bg-[#181818] p-4 rounded-lg hover:bg-[#282828] shadow-md transition-all duration-150">
-      <ToastContainer />
+      {/* <ReactNotifications /> */}
       <div className="relative h-36 w-36 snap-center">
         <img
           className="h-full w-full object-cover rounded-lg "

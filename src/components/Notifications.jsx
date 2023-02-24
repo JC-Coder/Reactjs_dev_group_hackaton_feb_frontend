@@ -43,7 +43,7 @@ export default function Notifications({
 
   return (
     <aside
-      className={`bg-black fixed p-4 top-0 right-0 h-screen z-50 w-[85vw] sm:w-[65vw] md:w-[45vw] transition ${
+      className={`backdrop-blur fixed p-4 top-0 right-0 h-screen z-50 w-[85vw] sm:w-[65vw] md:w-[45vw] transition ${
         showNotification ? "translate-x-0" : "translate-x-full"
       } `}
     >
@@ -60,7 +60,7 @@ export default function Notifications({
             <SingleNotification key={item._id} {...item} />
           ))}
         </div>
-        <div className="h-40 w-full absolute bottom-0 left-0 bg-gradient-to-t from-black" />
+        <div className="h-40 w-full absolute bottom-0 left-0 " />
       </div>
     </aside>
   );
