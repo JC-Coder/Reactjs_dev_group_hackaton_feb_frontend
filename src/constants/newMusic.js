@@ -210,8 +210,8 @@ export const newMusic = [
     },
     {
         id: nanoid(),
-        name: 'Tiwa Savage',
-        artist: 'Celia',
+        name: 'Celia',
+        artist: 'Tiwa Savage',
         albumArt: 'https://notjustok.com/wp-content/uploads/2020/09/Tiwa-Savage-1-420x420.jpeg',
         year: 2021,
         requested: false,

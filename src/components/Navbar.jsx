@@ -4,6 +4,7 @@ import Notifications from "./Notifications";
 import { notificationArr } from "../constants/notificationArr";
 import Overlay from "./Overlay";
 import Pusher from "pusher-js";
+import logo from '../assets/logo4.png'
 
 export default function Navbar() {
   const [showNotification, setShowNotification] = useState(false);
@@ -37,8 +38,10 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="sticky top-0 backdrop-blur px-6 py-2  z-50 flex items-center justify-end">
-        {/* <h1 className="text-white font-bold text-2xl">Navbar</h1> */}
+      <nav className="sticky top-0 backdrop-blur px-6 py-2  z-50  flex items-center justify-between">
+        <div>
+          <img className="h-5 -ml-5 " src={logo} alt="logo" />
+        </div>
         <div className="relative">
           <button
             onClick={() => {
@@ -46,12 +49,12 @@ export default function Navbar() {
               setNotificationCount((prev) => 0);
             }}
           >
-            <BellIcon className="h-7 hover:text-blue-400" />
+            <BellIcon className="h-7 hover:text-orange-500" />
           </button>
           {notificationCount < 1 ? (
             ""
           ) : (
-            <span className="absolute -top-1 -right-1 flex h-4 p-1 aspect-square items-center justify-center bg-red-500 rounded-full font-medium text-sm">
+            <span className="absolute -top-1 -right-1 flex h-4 p-1 aspect-square items-center justify-center bg-orange-500 rounded-full font-medium text-sm">
               {notificationCount}
             </span>
           )}

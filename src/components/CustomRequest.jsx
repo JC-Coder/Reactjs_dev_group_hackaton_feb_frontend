@@ -64,7 +64,7 @@ export default function CustomRequest() {
 
         <div className="mt-3">
           <button
-            className="bg-red-500 hover:bg-red-600 font-medium px-4 py-2 w-full rounded"
+            className="bg-orange-500 hover:bg-orange-600 font-medium px-4 py-2 w-full rounded"
             type="submit"
             onSubmit={handleSubmit}
           >
