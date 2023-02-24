@@ -1,11 +1,21 @@
-import SongRequestsDj from '../components/SongRequestsDj';
+import { useEffect } from "react";
+import SongRequestsDj from "../components/SongRequestsDj";
 
 function Dj() {
-  return <div>
-    <main>
-      <SongRequestsDj />
-    </main>
-    </div>;
+  useEffect(() => {
+    const djAuthenticated = localStorage.getItem("isDjAuthenticated");
+    if (djAuthenticated != "yes") {
+      window.location = "/auth";
+    }
+  }, []);
+
+  return (
+    <div>
+      <main>
+        <SongRequestsDj />
+      </main>
+    </div>
+  );
 }
 
 export default Dj;
