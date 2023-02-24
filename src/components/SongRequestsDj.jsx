@@ -33,6 +33,21 @@ export default function SongRequestsDj() {
     channel.unbind("all-requests");
   });
 
+  // sort function 
+  function handleSort(e){
+    const target = e.target.value;
+
+    if(target == 'latest'){
+      const sortedRequests = requests.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+      setRequests([...sortedRequests])
+    }
+
+    if(target == 'oldest'){
+      const sortedRequests = requests.sort((a, b) => a.createdAt.localeCompare(b.createdAt));
+      setRequests([...sortedRequests])
+    }
+  }
+
   return (
     <div className="flex-grow bg-[#1e1e1e] text-white h-screen overflow-y-scroll scrollbar-hide">
       <Navbar />
@@ -48,6 +63,7 @@ export default function SongRequestsDj() {
               name="Sort By"
               id="sort"
               className="bg-[#111111] p-2 outline-none rounded-lg"
+              onChange={handleSort}
             >
               <option value="oldest">oldest</option>
               <option value="latest">newest</option>
