@@ -462,5 +462,3 @@ export const newMusic = [
 
 
 
-
-console.log(newMusic.length)
